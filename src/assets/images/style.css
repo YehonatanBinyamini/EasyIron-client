@@ -1,0 +1,106 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  /* margin: 0;
+  background: -webkit-linear-gradient(45deg, #abd2d1, #a099a4);
+  background: linear-gradient(45deg, #49a09d, #c9c5cb); */
+  background-color: burlywood;
+  font-family: sans-serif;
+  font-weight: 100;
+  flex-direction: row;
+
+}
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-height: 600px;
+  overflow-y: scroll;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  
+}
+table {
+  width: 800px;
+  height: 800px;
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  
+}
+th,
+td {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #3a3838;
+}
+th {
+  text-align: center;
+}
+thead th {
+  background-color: #55608f;
+}
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+tbody td {
+  position: relative;
+}
+tbody td:hover:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -9999px;
+  bottom: -9999px;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: -1;
+}
+
+.L {
+    width: 35%;
+    display: block;
+    margin: 3px;
+}
+
+.kaf {
+    width: 35%;
+}
+
+input {
+    margin: 1px;
+    width: 2cm;
+    text-align: right;
+}
+
+
+
+.length {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.A-con {
+    display: flex;
+    align-items: center;
+}
+
+.L-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .label-a {
+}
+  
+  .label-b {
+    align-items: center;
+    margin-bottom: 10px; /* add some margin to separate the label from the image */
+    margin-right: 50px;
+}
+  
