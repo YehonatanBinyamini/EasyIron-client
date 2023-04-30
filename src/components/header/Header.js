@@ -17,13 +17,13 @@ function Header( props ) {
           <img className="logo" src={logo} alt="logo" />
         </a>
         <nav className="nav">
-          <a href="https://www.google.com" >צור קשר</a>
-          <a href="https://www.google.com" >אודות</a>
-          <a href="https://www.google.com" >קטלוג</a>
-          <a href="https://www.google.com" >צור הזמנה</a>
-          <a href="./login" onClick={loginHandler}>התחבר</a>
-          <label className="userName-header">|</label>
           <label className="userName-header">שלום {userName}</label>
+          <label className="userName-header">|</label>
+          <a href="./login" onClick={loginHandler}>התחבר</a>
+          <a href="https://www.google.com" >צור הזמנה</a>
+          <a href="https://www.google.com" >קטלוג</a>
+          <a href="https://www.google.com" >אודות</a>
+          <a href="https://www.google.com" >צור קשר</a>
         </nav>
       </header>
     );

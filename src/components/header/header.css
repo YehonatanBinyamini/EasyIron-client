@@ -29,15 +29,17 @@
 
 .nav {
     background-color: #8a2b06;
-    align-items:end;
+    align-items: end;
     justify-content: end;
-    margin-top: 15px;
+    margin-top: 0;
 }
 
 nav a {
 	margin: 0 1rem;
+  margin-right: 20px;
 	color: #eee;
 	text-decoration: none;
+  font-weight: bold;
 }
 
 nav a:hover {
