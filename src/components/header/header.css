@@ -1,0 +1,54 @@
+.header {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5rem;
+    background-color: #8a2b06;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+    margin-bottom: 10px;
+  }
+
+  .logo {
+    height: 220px;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+
+  
+  .header-button {
+    background: fixed;
+    border: #8a2b06;
+    
+}
+
+.nav {
+    background-color: #8a2b06;
+    align-items:end;
+    justify-content: end;
+    margin-top: 15px;
+}
+
+nav a {
+	margin: 0 1rem;
+	color: #eee;
+	text-decoration: none;
+}
+
+nav a:hover {
+	color: #2b1a62;
+    background-color: #8a2b06;
+}
+
+.userName-header {
+    margin-left: -10px;
+    margin-right: 20px;
+    color: #eee;
+    margin-bottom: 10px;
+    font-weight: bold;
+}

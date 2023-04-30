@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import Select from "react-select";
 import axios from "axios";
 import { saveAs } from "file-saver";
 import "./App.css";
 import Attribute from "./components/attribute/Attribute";
 import L from "./components/L/L";
-import logo from "./assets/images/1.png";
-//sdfsdfsdf
+import Header from "./components/header/Header";
+
 class App extends Component {
   stat = {
     name: "",
@@ -32,25 +31,28 @@ class App extends Component {
     { label: "one", value: 1 },
     { label: "two", value: 2 },
   ];
+  // // <div className="App">
+
+  // //   <input type="text" placeholder="Name" name="name" onChange={this.handleChange} />
+  // //  <input type="" placeholder="Receipt ID" name="receiptId" onChange={this.handleChange} />
+  // //   <input type="number" placeholder="Price 1" name="price1" onChange={this.handleChange} />
+  // //   <input type="number" placeholder="Price 2" name="price2" onChange={this.handleChange} />
+  // //   <input type="number" placeholder="test" isDisabled={this.props.disabled} />
+
+  // //</div>
+  // //{/* <img src={logo} alt="logo"/> */}
+  // <div className="container">
+
+  // </div>
+  // //{/* <button onClick={this.createAndDownloadPdf}>Download Pdf</button> */}
   render() {
     return (
-      // <div className="App">
-
-      //   <input type="text" placeholder="Name" name="name" onChange={this.handleChange} />
-      //  <input type="" placeholder="Receipt ID" name="receiptId" onChange={this.handleChange} />
-      //   <input type="number" placeholder="Price 1" name="price1" onChange={this.handleChange} />
-      //   <input type="number" placeholder="Price 2" name="price2" onChange={this.handleChange} />
-      //   <input type="number" placeholder="test" isDisabled={this.props.disabled} />
-
-      //</div>
-      <body className="App">
-        {/* <img src={logo} alt="logo"/> */}
-        <div>
-          <Attribute />
-          <L />
-        </div>
-        {/* <button onClick={this.createAndDownloadPdf}>Download Pdf</button> */}
-      </body>
+      <div className="App-container">
+        <Header />
+        <Attribute />
+        <L />
+        <L />
+      </div>
     );
   }
 }

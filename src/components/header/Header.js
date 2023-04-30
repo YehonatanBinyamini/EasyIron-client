@@ -1,32 +1,32 @@
 import React from "react";
+import './header.css';
+import logo from '../../assets/images/1.png'
 
-function Header({ path }) {
+function Header( props ) {
+
+  const userName ="אורח";
+
+  function loginHandler() {
+   
+    console.log(userName);
+  }
+
     return (
-      <header className="main-header">
-        <nav className="main-header__nav">
-          <ul className="main-header__item-list">
-            <li className="main-header__item">
-              <NavLink to="/" activeClassName="active">Shop</NavLink>
-            </li>
-            <li className="main-header__item">
-              <NavLink to="/products" activeClassName="active">Products</NavLink>
-            </li>
-            <li className="main-header__item">
-              <NavLink to="/cart" activeClassName="active">Cart</NavLink>
-            </li>
-            <li className="main-header__item">
-              <NavLink to="/orders" activeClassName="active">Orders</NavLink>
-            </li>
-            <li className="main-header__item">
-              <NavLink to="/admin/add-product" activeClassName="active">Add Product</NavLink>
-            </li>
-            <li className="main-header__item">
-              <NavLink to="/admin/products" activeClassName="active">Admin Products</NavLink>
-            </li>
-          </ul>
+      <header className="header">
+        <a href="./">
+          <img className="logo" src={logo} alt="logo" />
+        </a>
+        <nav className="nav">
+          <a href="https://www.google.com" >צור קשר</a>
+          <a href="https://www.google.com" >אודות</a>
+          <a href="https://www.google.com" >קטלוג</a>
+          <a href="https://www.google.com" >צור הזמנה</a>
+          <a href="./login" onClick={loginHandler}>התחבר</a>
+          <label className="userName-header">|</label>
+          <label className="userName-header">שלום {userName}</label>
         </nav>
       </header>
     );
 }
 
-import default Header;
+export default Header;
