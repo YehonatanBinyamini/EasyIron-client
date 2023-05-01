@@ -1,10 +1,14 @@
+:root {
+  --headerColor: #8a2b06;
+  --textColor: #eee;
+}
+
 .header {
     top: 0;
     left: 0;
     width: 100%;
     height: 5rem;
-    background-color: #8a2b06;
-    color: white;
+    background-color: var(--headerColor);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,37 +24,31 @@
     margin-left: 10px;
   }
 
-  
-  .header-button {
-    background: fixed;
-    border: #8a2b06;
-    
-}
-
 .nav {
-    background-color: #8a2b06;
+    background-color: var(--headerColor);
     align-items: end;
     justify-content: end;
     margin-top: 0;
+    vareble
 }
 
 nav a {
 	margin: 0 1rem;
   margin-right: 20px;
-	color: #eee;
+	color: var(--textColor);
 	text-decoration: none;
   font-weight: bold;
 }
 
 nav a:hover {
-	color: #2b1a62;
-    background-color: #8a2b06;
+	color:  rgb(241, 213, 56);
+  background-color: var(--headerColor);
 }
 
 .userName-header {
     margin-left: -10px;
     margin-right: 20px;
-    color: #eee;
+    color: var(--textColor);
     margin-bottom: 10px;
     font-weight: bold;
 }
