@@ -14,7 +14,7 @@
     align-items: right;
     justify-content: right;
     height: 170px;
-    width: 600px;
+    width: 650px;
     padding-bottom: -50px;
     margin-bottom: 10px;
 }
@@ -65,9 +65,9 @@
 .AB_inputs {
     display: flex;
     flex-direction: column;
-    margin-bottom: 4rem;
+    margin-top: 10px;
     text-align: right;
-    margin-right: 160px;
+    margin-right: 190px;
     font-weight: bold;
 }
 
@@ -77,4 +77,10 @@
     margin-right: 75px;
     margin-top: 16px;
     
+}
+
+.align_row {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
 }

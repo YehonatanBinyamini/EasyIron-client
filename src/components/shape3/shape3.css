@@ -1,0 +1,38 @@
+.shape3_img {
+    width: 120px;
+    height: 80px;
+}
+
+.kubeA_shape3 {
+    width: 50px;
+    height: 50px;
+    text-align:center;
+    font-weight: bold;
+    margin-bottom: -25px;
+    z-index: 1;
+}
+.kubeB_shape3 {
+    width: 50px;
+    height: 50px;
+    text-align:center;
+    font-weight: bold;
+    margin-top: -40px;
+}
+
+.kubeC_shape3 {
+    width: 50px;
+    height: 50px;
+    text-align:center;
+    font-weight: bold;
+    margin-top: -29px;
+    margin-right: 100px;
+}
+
+.kubeD_shape3 {
+    width: 50px;
+    height: 50px;
+    text-align:center;
+    font-weight: bold;
+    margin-top: -50px;
+    margin-left: 100px;
+}

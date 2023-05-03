@@ -5,6 +5,7 @@ import "./App.css";
 import Attribute from "./components/attribute/Attribute";
 import L from "./components/L/L";
 import Header from "./components/header/Header";
+import Shape3 from "./components/shape3/Shape3";
 
 class App extends Component {
   stat = {
@@ -50,6 +51,7 @@ class App extends Component {
       <div className="App-container">
         <Header />
         <Attribute />
+        <Shape3 />
         <L />
         <L />
       </div>
