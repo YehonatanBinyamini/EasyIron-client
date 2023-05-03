@@ -13,12 +13,8 @@ function Shape3() {
   const [units, setUnits] = useState("");
   const totalLength = useRef(0);
 
-  function calcTotalLength() {
-    totalLength.current = parseInt(lengthA) + parseInt(lengthB);
-  }
-
   useEffect(() => {
-    totalLength.current = parseInt(lengthA) + parseInt(lengthB);
+    totalLength.current = parseInt(lengthA) + parseInt(lengthB) + parseInt(lengthC) + parseInt(lengthD);
     console.log(totalLength.current);
   });
 
@@ -33,7 +29,7 @@ function Shape3() {
 
   return (
     <div className="container">
-      <div className="A_B_L">
+      <div className="letters_and_img">
         <div className="A_L">
           <div className="kubeA_shape3">
             {lengthA} <br />A

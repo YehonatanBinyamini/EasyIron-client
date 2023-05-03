@@ -36,3 +36,11 @@
     margin-top: -50px;
     margin-left: 100px;
 }
+
+.letters_and_img {
+    display: flex;
+    flex-direction: row-reverse;
+    position: absolute;
+    margin-top: -20px;
+    margin-right: -10px;
+}

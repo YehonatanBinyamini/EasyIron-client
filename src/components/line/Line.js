@@ -1,22 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
-import LImg from "../../assets/images/L.png";
-import "./L.css";
+import Img from "../../assets/images/line.PNG";
+import "./line.css";
 import Diameter from "../diameter/Diameter";
 import Input from "../input/Input";
 
-function L() {
+function Line() {
   const [lengthA, setLengthA] = useState("");
-  const [lengthB, setLengthB] = useState("");
   const [diameter, setDiameter] = useState(0);
   const [units, setUnits] = useState("");
   const totalLength = useRef(0);
 
-  // function calcTotalLength() {
-  //   totalLength.current = parseInt(lengthA) + parseInt(lengthB);
-  // }
-
   useEffect(() => {
-    totalLength.current = parseInt(lengthA) + parseInt(lengthB);
+    totalLength.current = parseInt(lengthA);
     console.log(totalLength.current);
   });
 
@@ -33,15 +28,13 @@ function L() {
     <div className="container">
       <div className="A_B_L">
         <div className="A_L">
-          <img className="img" src={LImg} alt="L" />
+          <img className="line_img" src={Img} alt="L" />
           <div className="kubeA">
             A <br />
             {lengthA}
           </div>
         </div>
-        <div className="kubeB">
-          B <br /> {lengthB}{" "}
-        </div>
+        
       </div>
       <div className="AB_inputs">
         <Input
@@ -49,13 +42,6 @@ function L() {
           length={lengthA}
           onChange={(e) => {
             handleInputs(e.target.value, setLengthA);
-          }}
-        />
-        <Input
-          letter="B"
-          length={lengthB}
-          onChange={(e) => {
-            handleInputs(e.target.value, setLengthB);
           }}
         />
       </div>
@@ -74,4 +60,4 @@ function L() {
   );
 }
 
-export default L;
+export default Line;

@@ -6,7 +6,7 @@ import Attribute from "./components/attribute/Attribute";
 import L from "./components/L/L";
 import Header from "./components/header/Header";
 import Shape3 from "./components/shape3/Shape3";
-
+import Line from "./components/line/Line";
 class App extends Component {
   stat = {
     name: "",
@@ -51,6 +51,7 @@ class App extends Component {
       <div className="App-container">
         <Header />
         <Attribute />
+        <Line />
         <Shape3 />
         <L />
         <L />
