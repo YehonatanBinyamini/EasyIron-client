@@ -1,5 +1,5 @@
 import React from "react";
-import diameter from "./diameter.css";
+import "./diameter.css";
 
 function Diameter(props) {
   const options = [
@@ -18,7 +18,7 @@ function Diameter(props) {
     { label: "32", value: 32, },
     { label: "36", value: 36, },
   ];
-  
+
 
   function handleChange(e){
     props.handleValue(e.target.value)
