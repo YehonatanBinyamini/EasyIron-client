@@ -18,6 +18,7 @@ function Diameter(props) {
     { label: "32", value: 32, },
     { label: "36", value: 36, },
   ];
+  
 
   function handleChange(e){
     props.handleValue(e.target.value)

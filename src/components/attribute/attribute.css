@@ -1,15 +1,19 @@
-.attr {
+.attr_container {
     height: 30px;
-    width: 600px;
+    width: 650px;
     background-color: rgb(159, 222, 243);
     border: 2px solid;
     margin-bottom: 5px;
     padding-bottom: 10px;
     border-radius: 10px;
+    position: static;
+  }
+  
+  .attr_words {
     text-align: right;
     font-weight: bold;
     justify-content: space-around;
     display: flex;
     flex-direction: row-reverse;
-    position: static;
+    margin-right: 30px;
   }

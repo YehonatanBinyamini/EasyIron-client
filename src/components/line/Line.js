@@ -6,9 +6,9 @@ import Input from "../input/Input";
 
 function Line() {
   const [lengthA, setLengthA] = useState("");
-  const [diameter, setDiameter] = useState(0);
   const [units, setUnits] = useState("");
   const totalLength = useRef(0);
+  const diameter = useRef(0);
 
   useEffect(() => {
     totalLength.current = parseInt(lengthA);
@@ -16,9 +16,9 @@ function Line() {
   });
 
   function handleDiameterValue(val) {
-    setDiameter(val);
-    console.log(diameter);
-  }
+      diameter.current = val;
+      console.log(diameter.current);
+    }
 
   const handleInputs = (text, setter) => {
     if (text > 0 || text.length === 0) setter(text);

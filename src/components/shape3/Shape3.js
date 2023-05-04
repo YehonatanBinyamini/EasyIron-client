@@ -9,18 +9,18 @@ function Shape3() {
   const [lengthB, setLengthB] = useState("");
   const [lengthC, setLengthC] = useState("");
   const [lengthD, setLengthD] = useState("");
-  const [diameter, setDiameter] = useState(0);
   const [units, setUnits] = useState("");
   const totalLength = useRef(0);
+  const diameter = useRef(0);
 
   useEffect(() => {
     totalLength.current = parseInt(lengthA) + parseInt(lengthB) + parseInt(lengthC) + parseInt(lengthD);
     console.log(totalLength.current);
   });
 
-  function handleDiameterValue(val) {
-    setDiameter(val);
-    console.log(diameter);
+    function handleDiameterValue(val) {
+    diameter.current = val;
+    console.log(diameter.current);
   }
 
   const handleInputs = (text, setter) => {
