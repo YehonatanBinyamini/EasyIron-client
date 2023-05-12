@@ -9,9 +9,10 @@ function Header(props) {
 
   const userName = "אורח";
 
-  function styleHandler({ isActive }) {
-    return ["nav a", isActive ? "active" : null].filter(Boolean).join(" ");
-  }
+  // function styleHandler({ isActive }) {
+  //   return ["nav a", isActive ? "active" : null].filter(Boolean).join(" ");
+  // }
+  
   function loginHandler() {
     console.log(userName);
   }
@@ -24,17 +25,13 @@ function Header(props) {
       <nav className="nav">
         <label className="userName-header">שלום {userName}</label>
         <label className="userName-header">|</label>
-        <NavLink
-          to="./login"
-          className={styleHandler}
-          onClick={loginHandler}
-        >
+        <NavLink to="./login" onClick={loginHandler}>
           התחבר
         </NavLink>
-        <NavLink to="./">צור הזמנה</NavLink>
-        <NavLink to="./">קטלוג</NavLink>
-        <NavLink to="./">אודות</NavLink>
-        <NavLink to="./">צור קשר</NavLink>
+        <NavLink to="./NewOrder" >צור הזמנה</NavLink>
+        <NavLink to="./Catalog">קטלוג</NavLink>
+        <NavLink to="./About">אודות</NavLink>
+        <NavLink to="./ContactUs">צור קשר</NavLink>
       </nav>
     </header>
   );

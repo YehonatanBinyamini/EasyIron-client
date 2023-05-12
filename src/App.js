@@ -12,6 +12,10 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import RootLayout from "./components/rootLayout/RootLayout";
 import Error from "./pages/Error";
+import About from "./pages/About";
+import Catalog from "./pages/Catalog";
+import ContactUs from "./pages/ContactUs";
+import NewOrder from "./pages/NewOrder";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +24,10 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       { path: "/", element: <Home /> },
+      { path: "/About", element: <About /> },
+      { path: "/Catalog", element: <Catalog /> },
+      { path: "/ContactUs", element: <ContactUs /> },
+      { path: "/NewOrder", element: <NewOrder /> },
       { path: "/login", element: <Login /> },
     ],
   },
