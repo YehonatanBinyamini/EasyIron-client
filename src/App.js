@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import axios from "axios";
 import { saveAs } from "file-saver";
 import "./App.css";
@@ -7,6 +8,23 @@ import L from "./components/L/L";
 import Header from "./components/header/Header";
 import Shape3 from "./components/shape3/Shape3";
 import Line from "./components/line/Line";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import RootLayout from "./components/rootLayout/RootLayout";
+import Error from "./pages/Error";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    errorElement: <Error />,
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "/login", element: <Login /> },
+    ],
+  },
+]);
+
 class App extends Component {
   stat = {
     name: "",
@@ -46,17 +64,26 @@ class App extends Component {
 
   // </div>
   // //{/* <button onClick={this.createAndDownloadPdf}>Download Pdf</button> */}
+
   render() {
     return (
       <div className="App-container">
-        <Header />
+        <RouterProvider router={router} />
+      </div>
+    );
+
+    /*return (
+      <RouterProvider />
+
+      <div className="App-container">
+         <Header />
         <Attribute />
         <Line />
         <Shape3 />
         <L />
-        <L />
+        <L /> 
       </div>
-    );
+    );*/
   }
 }
 
