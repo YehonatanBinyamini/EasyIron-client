@@ -39,7 +39,8 @@ nav a {
   font-weight: bold;
 }
 
-nav a:hover {
+nav a:hover,
+nav a.active {
 	color:  rgb(241, 213, 56);
   background-color: var(--headerColor);
 }

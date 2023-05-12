@@ -1,12 +1,17 @@
 import React from "react";
 import "./header.css";
 import logo from "../../assets/images/1.png";
-import { Link } from "react-router-dom";
-
-
+import { Link, NavLink } from "react-router-dom";
+import classes from "./header.module.css";
 function Header(props) {
+  const activeColor = "rgb(241, 213, 56)";
+  const nonActiveColor = "#eee";
+
   const userName = "אורח";
 
+  function styleHandler({ isActive }) {
+    return ["nav a", isActive ? "active" : null].filter(Boolean).join(" ");
+  }
   function loginHandler() {
     console.log(userName);
   }
@@ -19,13 +24,17 @@ function Header(props) {
       <nav className="nav">
         <label className="userName-header">שלום {userName}</label>
         <label className="userName-header">|</label>
-        <Link to="./login" onClick={loginHandler}>
+        <NavLink
+          to="./login"
+          className={styleHandler}
+          onClick={loginHandler}
+        >
           התחבר
-        </Link>
-        <a href="https://www.google.com">צור הזמנה</a>
-        <a href="https://www.google.com">קטלוג</a>
-        <a href="https://www.google.com">אודות</a>
-        <a href="https://www.google.com">צור קשר</a>
+        </NavLink>
+        <NavLink to="./">צור הזמנה</NavLink>
+        <NavLink to="./">קטלוג</NavLink>
+        <NavLink to="./">אודות</NavLink>
+        <NavLink to="./">צור קשר</NavLink>
       </nav>
     </header>
   );
