@@ -2,10 +2,9 @@ import React from "react";
 import "./header.css";
 import logo from "../../assets/images/1.png";
 import { Link, NavLink } from "react-router-dom";
-import classes from "./header.module.css";
 function Header(props) {
-  const activeColor = "rgb(241, 213, 56)";
-  const nonActiveColor = "#eee";
+//   const activeColor = "rgb(241, 213, 56)";
+//   const nonActiveColor = "#eee";
 
   const userName = "אורח";
 
