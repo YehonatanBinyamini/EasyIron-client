@@ -34,8 +34,8 @@ const router = createBrowserRouter([
 ]);
 
 class App extends Component {
-  stat = {
-    name: "",
+  state = {
+    name: "yonile",
     receiptId: 0,
     price1: 0,
     price2: 0,
@@ -71,12 +71,13 @@ class App extends Component {
   // <div className="container">
 
   // </div>
-  // //{/* <button onClick={this.createAndDownloadPdf}>Download Pdf</button> */}
+  // {/* <button onClick={this.createAndDownloadPdf}>Download Pdf</button> */}
 
   render() {
     return (
       <div className="App-container">
         <RouterProvider router={router} />
+        <button onClick={this.createAndDownloadPdf}>Download Pdf</button>
       </div>
     );
 
