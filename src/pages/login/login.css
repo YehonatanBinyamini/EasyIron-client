@@ -11,6 +11,8 @@
   .login-form label {
     display: block;
     margin-bottom: 10px;
+    text-align: right;
+    font-weight: bold;
   }
   
   .login-form input {

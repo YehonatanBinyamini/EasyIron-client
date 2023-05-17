@@ -48,7 +48,7 @@ const Login = () => {
   return (
     <form className="login-form" onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="email">Email:</label>
+        <label htmlFor="email">דואר אלקטרוני</label>
         <input
           type="email"
           id="email"
@@ -58,7 +58,7 @@ const Login = () => {
         />
       </div>
       <div>
-        <label htmlFor="password">Password:</label>
+        <label htmlFor="password">סיסמה</label>
         <input
           type="password"
           id="password"
