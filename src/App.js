@@ -9,7 +9,7 @@ import Header from "./components/header/Header";
 import Shape3 from "./components/shape3/Shape3";
 import Line from "./components/line/Line";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
+import Login from "./pages/login/Login";
 import RootLayout from "./components/rootLayout/RootLayout";
 import Error from "./pages/Error";
 import About from "./pages/About";
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <Error />,
     children: [
-      { path: "/", element: <Home /> },
+      { index: true, element: <Home /> }, // the index element switching the path
       { path: "/About", element: <About /> },
       { path: "/Catalog", element: <Catalog /> },
       { path: "/ContactUs", element: <ContactUs /> },
