@@ -16,6 +16,7 @@ import About from "./pages/About";
 import Catalog from "./pages/Catalog";
 import ContactUs from "./pages/ContactUs";
 import NewOrder from "./pages/NewOrder";
+import NewUser from "./pages/login/NewUser";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,8 @@ const router = createBrowserRouter([
       { path: "/Catalog", element: <Catalog /> },
       { path: "/ContactUs", element: <ContactUs /> },
       { path: "/NewOrder", element: <NewOrder /> },
-      { path: "/login", element: <Login /> },
+      { path: "/Login", element: <Login /> },
+      { path: "/NewUser", element: <NewUser /> },
     ],
   },
 ]);
@@ -77,7 +79,7 @@ class App extends Component {
     return (
       <div className="App-container">
         <RouterProvider router={router} />
-        <button onClick={this.createAndDownloadPdf}>Download Pdf</button>
+        {/* <button onClick={this.createAndDownloadPdf}>Download Pdf</button> */}
       </div>
     );
 
