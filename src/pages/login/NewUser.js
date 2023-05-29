@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./login.css"; // Import the CSS file for styling
 
 const NewUser = () => {
@@ -6,6 +7,7 @@ const NewUser = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,8 +35,11 @@ const NewUser = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        // Handle the response from the server
-        alert(data.error);
+        if (data.Login){
+            navigate("../")
+        } else {
+            alert(data.error);
+        }
       })
       .catch((error) => {
         console.error("Error:", error);

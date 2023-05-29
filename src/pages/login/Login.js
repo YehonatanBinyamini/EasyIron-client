@@ -17,13 +17,8 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Create an object containing the email and password
-    const credentials = {
-      email,
-      password,
-    };
+    const credentials = { email, password };
 
-    // Send the credentials to the server
     fetch("http://localhost:5000/login", {
       method: "POST",
       headers: {
@@ -35,15 +30,17 @@ const Login = () => {
       .then((data) => {
         // Handle the response from the server
         console.log(data);
+        if (data.passwordIsFit){
+          setEmail("");
+          setPassword("");
+          navigate("../")
+        } else {
+          alert("דואר אלקטרוני או סיסמה אינם נכונים")
+        }
       })
       .catch((error) => {
-        // Handle any errors
         console.error("Error:", error);
       });
-
-    // Reset the form
-    setEmail("");
-    setPassword("");
   };
 
   const newUserHandler = () => {
