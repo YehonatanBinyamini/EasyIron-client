@@ -3,11 +3,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import axios from "axios";
 import { saveAs } from "file-saver";
 import "./App.css";
-import Attribute from "./components/attribute/Attribute";
-import L from "./components/L/L";
-import Header from "./components/header/Header";
-import Shape3 from "./components/shape3/Shape3";
-import Line from "./components/line/Line";
+// import Attribute from "./components/attribute/Attribute";
+// import L from "./components/L/L";
+// import Header from "./components/header/Header";
+// import Shape3 from "./components/shape3/Shape3";
+// import Line from "./components/line/Line";
 import Home from "./pages/Home";
 import Login from "./pages/login/Login";
 import RootLayout from "./components/rootLayout/RootLayout";
@@ -83,18 +83,6 @@ class App extends Component {
       </div>
     );
 
-    /*return (
-      <RouterProvider />
-
-      <div className="App-container">
-         <Header />
-        <Attribute />
-        <Line />
-        <Shape3 />
-        <L />
-        <L /> 
-      </div>
-    );*/
   }
 }
 
