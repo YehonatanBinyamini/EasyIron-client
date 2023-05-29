@@ -7,6 +7,7 @@ const NewUser = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("בדיקת בעיות");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -14,12 +15,12 @@ const NewUser = () => {
 
     // Validate inputs
     if (!name || !email || !password || !confirmPassword) {
-      alert("Please fill in all fields.");
+        setErrorMessage("יש למלא את כל השדות");
       return;
     }
 
     if (password !== confirmPassword) {
-      alert("Passwords don't match.");
+      setErrorMessage("הסיסמאות לא תואמות");
       return;
     }
 
@@ -38,7 +39,7 @@ const NewUser = () => {
         if (data.Login){
             navigate("../")
         } else {
-            alert(data.error);
+            setErrorMessage(data.error);
         }
       })
       .catch((error) => {
@@ -56,7 +57,7 @@ const NewUser = () => {
             type="text"
             id="name"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => {setErrorMessage(""); setName(e.target.value)}}
             className="input-field"
           />
         </div>
@@ -66,7 +67,7 @@ const NewUser = () => {
             type="email"
             id="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {setErrorMessage(""); setEmail(e.target.value)}}
             className="input-field"
           />
         </div>
@@ -76,7 +77,7 @@ const NewUser = () => {
             type="password"
             id="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {setErrorMessage(""); setPassword(e.target.value)}}
             className="input-field"
           />
         </div>
@@ -86,10 +87,11 @@ const NewUser = () => {
             type="password"
             id="confirmPassword"
             value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onChange={(e) => {setErrorMessage(""); setConfirmPassword(e.target.value)}}
             className="input-field"
           />
         </div>
+        <label className="errMsg">{errorMessage}</label>
         <button type="submit" className="submit-button">
           צור משתמש
         </button>

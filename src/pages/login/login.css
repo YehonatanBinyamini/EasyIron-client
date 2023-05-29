@@ -51,3 +51,7 @@
   .new-user-button:hover {
     background-color: #45a049;
   }
+
+  .errMsg {
+    color: red;
+  }
