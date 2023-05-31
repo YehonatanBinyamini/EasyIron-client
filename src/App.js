@@ -15,7 +15,7 @@ import Error from "./pages/Error";
 import About from "./pages/About";
 import Catalog from "./pages/Catalog";
 import ContactUs from "./pages/ContactUs";
-import NewOrder from "./pages/NewOrder";
+import NewOrder from "./pages/newOrder/NewOrder";
 import NewUser from "./pages/login/NewUser";
 
 const router = createBrowserRouter([
@@ -82,7 +82,6 @@ class App extends Component {
         {/* <button onClick={this.createAndDownloadPdf}>Download Pdf</button> */}
       </div>
     );
-
   }
 }
 

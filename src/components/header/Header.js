@@ -13,7 +13,7 @@ function Header(props) {
   // }
   
   function loginHandler() {
-    console.log(userName);
+    //console.log(userName);
   }
 
   return (
