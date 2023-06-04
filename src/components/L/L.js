@@ -4,7 +4,7 @@ import "./L.css";
 import Diameter from "../diameter/Diameter";
 import Input from "../input/Input";
 
-function L() {
+function L({ id }) {
   const [lengthA, setLengthA] = useState("");
   const [lengthB, setLengthB] = useState("");
   const [units, setUnits] = useState("");
@@ -13,6 +13,9 @@ function L() {
   // function calcTotalLength() {
   //   totalLength.current = parseInt(lengthA) + parseInt(lengthB);
   // }
+  // useEffect(() => {
+  //   const itemId = Math.floor(Math.random() * 90000) + 10000;
+  // },[])
 
   useEffect(() => {
     totalLength.current = parseInt(lengthA) + parseInt(lengthB);
