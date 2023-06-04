@@ -4,7 +4,7 @@ import "./L.css";
 import Diameter from "../diameter/Diameter";
 import Input from "../input/Input";
 
-function L({ id }) {
+function L({ id, sendData }) {
   const [lengthA, setLengthA] = useState("");
   const [lengthB, setLengthB] = useState("");
   const [units, setUnits] = useState("");
@@ -13,9 +13,10 @@ function L({ id }) {
   // function calcTotalLength() {
   //   totalLength.current = parseInt(lengthA) + parseInt(lengthB);
   // }
-  // useEffect(() => {
-  //   const itemId = Math.floor(Math.random() * 90000) + 10000;
-  // },[])
+
+  useEffect(() => {
+    handleData()
+  },[lengthA, lengthB, units, totalLength, diameter]);
 
   useEffect(() => {
     totalLength.current = parseInt(lengthA) + parseInt(lengthB);
@@ -30,6 +31,19 @@ function L({ id }) {
   const handleInputs = (text, setter) => {
     if (text > 0 || text.length === 0) setter(text);
   };
+
+  function handleData() {
+    const data = {
+      id: id,
+      shape: "L",
+      length: `${lengthA} A <br> ${lengthB} B`,
+      units: units,
+      diameter: diameter.current,
+      totalLength: totalLength.current,
+    };
+
+    sendData(data);
+  }
 
   return (
     <div className="container">

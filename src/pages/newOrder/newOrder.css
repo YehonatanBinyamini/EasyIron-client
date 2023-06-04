@@ -17,3 +17,20 @@
   .delete-button:hover {
     background-color: brown;
 }
+
+.create-new-order-btn {
+    width: 80px;
+    height: 40px;
+    background-color: greenyellow;
+    font-weight: bold;
+    font-size: 1pc;
+    border-radius: 10%;
+    justify-content: flex-end;
+    align-self: right;
+    display: flex;
+}
+
+.create-new-order-btn:hover {
+    background-color: darkgreen;
+    color: white;
+}
