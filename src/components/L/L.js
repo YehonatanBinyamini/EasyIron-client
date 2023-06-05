@@ -16,7 +16,7 @@ function L({ id, sendData }) {
 
   useEffect(() => {
     handleData()
-  },[lengthA, lengthB, units, totalLength, diameter]);
+  },[lengthA, lengthB, units, totalLength.current, diameter.current]);
 
   useEffect(() => {
     totalLength.current = parseInt(lengthA) + parseInt(lengthB);
@@ -25,7 +25,6 @@ function L({ id, sendData }) {
 
   function handleDiameterValue(val) {
     diameter.current = val;
-    console.log(diameter.current);
   }
 
   const handleInputs = (text, setter) => {
@@ -36,7 +35,8 @@ function L({ id, sendData }) {
     const data = {
       id: id,
       shape: "L",
-      length: `${lengthA} A <br> ${lengthB} B`,
+      A: lengthA, 
+      B: lengthB,
       units: units,
       diameter: diameter.current,
       totalLength: totalLength.current,
