@@ -16,7 +16,8 @@ function L({ id, sendData }) {
 
   useEffect(() => {
     handleData()
-  },[lengthA, lengthB, units, totalLength.current, diameter.current]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[lengthA, lengthB, units, totalLength, diameter]);
 
   useEffect(() => {
     totalLength.current = parseInt(lengthA) + parseInt(lengthB);
@@ -35,11 +36,12 @@ function L({ id, sendData }) {
     const data = {
       id: id,
       shape: "L",
-      A: lengthA, 
-      B: lengthB,
-      units: units,
+      A: lengthA.length === 0 ? 0 : lengthA, 
+      B: lengthB.length === 0 ? 0 : lengthB,
+      units: units.length === 0 ? 0 : units,
       diameter: diameter.current,
       totalLength: totalLength.current,
+      weight: "TODO"
     };
 
     sendData(data);

@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import Attribute from "../../components/attribute/Attribute";
 import L from "../../components/L/L";
 import Modal from "../../components/modal/Modal";
 import "./newOrder.css";
-import urlServer from "../../assets/urlServer";
+import { urlServer } from "../../assets/helpers";
+import Parse from "html-react-parser";
 
 export default function NewOrder() {
   const [shapes, setShapes] = useState([]);
   const [htmlContent, setHtmlContent] = useState("");
+  const [htmlContentAvailable, setHtmlContentAvailable] = useState("");
 
   function handleDataFromModal(shape) {
     if (shape === "L") {
@@ -21,16 +23,18 @@ export default function NewOrder() {
     setShapes(updatedShapes);
   }
 
-  function handleDataFromShape(data) {
-    const updatedShapes = shapes.map((shape) =>
-      shape.id === data.id ? { id: shape.id, data: data } : shape
-    );
-    setShapes(updatedShapes);
-  }
+  const handleDataFromShape = useCallback(
+    (data) => {
+      const updatedShapes = shapes.map((shape) =>
+        shape.id === data.id ? { id: shape.id, data: data } : shape
+      );
+      setShapes(updatedShapes);
+    },
+    [shapes]
+  );
 
   function handleCreateOrder() {
-    const urlServer = "http://localhost:5000";
-
+    console.log(shapes);
     fetch(`${urlServer}/new-order`, {
       method: "POST",
       headers: {
@@ -46,7 +50,9 @@ export default function NewOrder() {
         }
       })
       .then((htmlContent) => {
-        setHtmlContent(htmlContent); // Set the HTML content received from the server
+        //const parsedString = Parse(htmlContent);
+        setHtmlContent(htmlContent);
+        setHtmlContentAvailable(true);
       })
       .catch((error) => {
         console.log(error);
@@ -55,35 +61,46 @@ export default function NewOrder() {
 
   return (
     <>
-      <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
-      <h1>צור הזמנה חדשה</h1>
-      <Attribute />
-      {shapes.length === 0 ? (
-        <h2>לא נבחרו צורות</h2>
+      {htmlContentAvailable ? (
+        <div
+          className="modal-content"
+          dangerouslySetInnerHTML={{ __html: htmlContent }}
+        />
       ) : (
-        shapes.map((item) => (
-          <React.Fragment key={item.id}>
-            <L
-              sendData={handleDataFromShape}
-              handleData={handleCreateOrder}
-              id={item.id}
-            />
-            <button
-              className="delete-button"
-              onClick={() => handleDelete(item.id)}
-            >
-              הסר
-            </button>
-          </React.Fragment>
-        ))
-      )}
+        <>
+          <h1>צור הזמנה חדשה</h1>
+          <Attribute />
+          {shapes.length === 0 ? (
+            <h2>לא נבחרו צורות</h2>
+          ) : (
+            shapes.map((item) => (
+              <React.Fragment key={item.id}>
+                <L
+                  sendData={handleDataFromShape}
+                  handleData={handleCreateOrder}
+                  id={item.id}
+                />
+                <button
+                  className="delete-button"
+                  onClick={() => handleDelete(item.id)}
+                >
+                  הסר
+                </button>
+              </React.Fragment>
+            ))
+          )}
 
-      {shapes.length > 0 && (
-        <button onClick={handleCreateOrder} className="create-new-order-btn">
-          צור הזמנה
-        </button>
+          {shapes.length > 0 && (
+            <button
+              onClick={handleCreateOrder}
+              className="create-new-order-btn"
+            >
+              צור הזמנה
+            </button>
+          )}
+          <Modal onDataSent={handleDataFromModal} />
+        </>
       )}
-      <Modal onDataSent={handleDataFromModal} />
     </>
   );
 }
