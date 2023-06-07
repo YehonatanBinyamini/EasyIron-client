@@ -4,7 +4,8 @@ import L from "../../components/L/L";
 import Modal from "../../components/modal/Modal";
 import "./newOrder.css";
 import { urlServer } from "../../assets/helpers";
-import Parse from "html-react-parser";
+import { saveAs } from "file-saver";
+import axios from "axios";
 
 export default function NewOrder() {
   const [shapes, setShapes] = useState([]);
@@ -59,13 +60,41 @@ export default function NewOrder() {
       });
   }
 
+  function handleCloseTemplate() {
+    setHtmlContentAvailable(false);
+  }
+
+  function handleCreatePDFfile() {
+    axios
+      .post("/create-pdf", shapes)
+      .then(() => axios.get("fetch-pdf", { responseType: "blob" }))
+      .then((res) => {
+        const pdfBlob = new Blob([res.data], { type: "application/pdf" });
+
+        saveAs(pdfBlob, "EasyIronOrder.pdf");
+      });
+  }
+
   return (
     <>
       {htmlContentAvailable ? (
-        <div
-          className="modal-content"
-          dangerouslySetInnerHTML={{ __html: htmlContent }}
-        />
+        <>
+          <div>
+            <button
+              className="close-template-btn"
+              onClick={handleCloseTemplate}
+            >
+              ביטול
+            </button>
+            <button className="create-pdf-btn" onClick={handleCreatePDFfile}>
+              הורד קובץ
+            </button>
+          </div>
+          <div
+            className="modal-content"
+            dangerouslySetInnerHTML={{ __html: htmlContent }}
+          />
+        </>
       ) : (
         <>
           <h1>צור הזמנה חדשה</h1>
