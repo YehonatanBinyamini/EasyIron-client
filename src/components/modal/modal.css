@@ -63,7 +63,7 @@
     display: flex;
     align-items: right;
     cursor: pointer;
-    position: absolute;
+    /* position: absolute; */
     margin-top: 20px;
   }
 
