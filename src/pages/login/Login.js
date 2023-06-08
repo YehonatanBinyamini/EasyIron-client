@@ -5,12 +5,16 @@ import "./login.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
   const navigate = useNavigate();
   const handleEmailChange = (e) => {
+    setErrorMessage("")
     setEmail(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
+    setErrorMessage("")
     setPassword(e.target.value);
   };
 
@@ -35,7 +39,7 @@ const Login = () => {
           setPassword("");
           navigate("../")
         } else {
-          alert("דואר אלקטרוני או סיסמה אינם נכונים")
+          setErrorMessage("דואר אלקטרוני או סיסמה אינם נכונים")
         }
       })
       .catch((error) => {
@@ -70,6 +74,7 @@ const Login = () => {
             required
           />
         </div>
+        <label className="errMsg">{errorMessage}</label>
         <button type="submit">התחבר</button>
       </form>
       <button className="new-user-button" onClick={newUserHandler}>
