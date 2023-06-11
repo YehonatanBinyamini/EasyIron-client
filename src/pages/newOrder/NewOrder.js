@@ -1,6 +1,8 @@
 import React, { useState, useCallback } from "react";
 import Attribute from "../../components/attribute/Attribute";
 import L from "../../components/L/L";
+// import Shape3 from "./components/shape3/Shape3";
+// import Line from "./components/line/Line";
 import Modal from "../../components/modal/Modal";
 import "./newOrder.css";
 import { urlServer } from "../../assets/helpers";
@@ -15,7 +17,7 @@ export default function NewOrder() {
   function handleDataFromModal(shape) {
     if (shape === "L") {
       const itemId = Math.floor(Math.random() * 99876) + 10000;
-      setShapes([...shapes, { id: itemId }]);
+      setShapes([...shapes, { id: itemId, shape: "L" }]);
     }
   }
 
@@ -27,7 +29,7 @@ export default function NewOrder() {
   const handleDataFromShape = useCallback(
     (data) => {
       const updatedShapes = shapes.map((shape) =>
-        shape.id === data.id ? { id: shape.id, data: data } : shape
+        shape.id === data.id ? data : shape
       );
       setShapes(updatedShapes);
     },
@@ -104,11 +106,12 @@ export default function NewOrder() {
           ) : (
             shapes.map((item) => (
               <React.Fragment key={item.id}>
+                {item.shape === "L" &&
                 <L
                   sendData={handleDataFromShape}
-                  handleData={handleCreateOrder}
                   id={item.id}
                 />
+              }
                 <button
                   className="delete-button"
                   onClick={() => handleDelete(item.id)}
