@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../components/loading/Loading";
 import "./login.css"; // Import the CSS file for styling
 
 const NewUser = () => {
@@ -8,14 +9,14 @@ const NewUser = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     // Validate inputs
     if (!name || !email || !password || !confirmPassword) {
-        setErrorMessage("יש למלא את כל השדות");
+      setErrorMessage("יש למלא את כל השדות");
       return;
     }
 
@@ -26,7 +27,7 @@ const NewUser = () => {
 
     // Create user object
     const newUser = { name, email, password };
-
+    setIsLoading(true);
     fetch("http://localhost:5000/newUser", {
       method: "POST",
       headers: {
@@ -36,13 +37,15 @@ const NewUser = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data.Login){
-            navigate("../")
+        setIsLoading(false);
+        if (data.Login) {
+          navigate("../");
         } else {
-            setErrorMessage(data.error);
+          setErrorMessage(data.error);
         }
       })
       .catch((error) => {
+        setIsLoading(true);
         console.error("Error:", error);
       });
   };
@@ -57,7 +60,10 @@ const NewUser = () => {
             type="text"
             id="name"
             value={name}
-            onChange={(e) => {setErrorMessage(""); setName(e.target.value)}}
+            onChange={(e) => {
+              setErrorMessage("");
+              setName(e.target.value);
+            }}
             className="input-field"
           />
         </div>
@@ -67,7 +73,10 @@ const NewUser = () => {
             type="email"
             id="email"
             value={email}
-            onChange={(e) => {setErrorMessage(""); setEmail(e.target.value)}}
+            onChange={(e) => {
+              setErrorMessage("");
+              setEmail(e.target.value);
+            }}
             className="input-field"
           />
         </div>
@@ -77,7 +86,10 @@ const NewUser = () => {
             type="password"
             id="password"
             value={password}
-            onChange={(e) => {setErrorMessage(""); setPassword(e.target.value)}}
+            onChange={(e) => {
+              setErrorMessage("");
+              setPassword(e.target.value);
+            }}
             className="input-field"
           />
         </div>
@@ -87,14 +99,21 @@ const NewUser = () => {
             type="password"
             id="confirmPassword"
             value={confirmPassword}
-            onChange={(e) => {setErrorMessage(""); setConfirmPassword(e.target.value)}}
+            onChange={(e) => {
+              setErrorMessage("");
+              setConfirmPassword(e.target.value);
+            }}
             className="input-field"
           />
         </div>
         <label className="errMsg">{errorMessage}</label>
-        <button type="submit" className="submit-button">
-          צור משתמש
-        </button>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <button type="submit" className="submit-button">
+            צור משתמש
+          </button>
+        )}
       </form>
     </>
   );

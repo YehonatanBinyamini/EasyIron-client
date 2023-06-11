@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
+import Loading from "../../components/loading/Loading";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
   const handleEmailChange = (e) => {
-    setErrorMessage("")
+    setErrorMessage("");
     setEmail(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
-    setErrorMessage("")
+    setErrorMessage("");
     setPassword(e.target.value);
   };
 
@@ -22,7 +24,7 @@ const Login = () => {
     e.preventDefault();
 
     const credentials = { email, password };
-
+    setIsLoading(true);
     fetch("http://localhost:5000/login", {
       method: "POST",
       headers: {
@@ -33,16 +35,19 @@ const Login = () => {
       .then((response) => response.json())
       .then((data) => {
         // Handle the response from the server
+        setIsLoading(false);
         console.log(data);
-        if (data.passwordIsFit){
+        if (data.passwordIsFit) {
           setEmail("");
           setPassword("");
-          navigate("../")
+          navigate("../");
         } else {
-          setErrorMessage("דואר אלקטרוני או סיסמה אינם נכונים")
+          setIsLoading(false);
+          setErrorMessage("דואר אלקטרוני או סיסמה אינם נכונים");
         }
       })
       .catch((error) => {
+        setIsLoading(false)
         console.error("Error:", error);
       });
   };
@@ -75,7 +80,7 @@ const Login = () => {
           />
         </div>
         <label className="errMsg">{errorMessage}</label>
-        <button type="submit">התחבר</button>
+        {isLoading ? <Loading /> : <button type="submit">התחבר</button>}
       </form>
       <button className="new-user-button" onClick={newUserHandler}>
         משתמש חדש
