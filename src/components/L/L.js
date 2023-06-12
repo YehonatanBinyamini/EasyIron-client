@@ -15,14 +15,11 @@ function L({ id, sendData }) {
   // }
 
   useEffect(() => {
-    handleData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[lengthA, lengthB, units, totalLength, diameter]);
-
-  useEffect(() => {
     totalLength.current = parseInt(lengthA) + parseInt(lengthB);
-    //console.log(totalLength.current);
-  });
+    handleData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lengthA, lengthB, units, totalLength, diameter]);
+
 
   function handleDiameterValue(val) {
     diameter.current = val;
@@ -36,12 +33,12 @@ function L({ id, sendData }) {
     const data = {
       id: id,
       shape: "L",
-      A: lengthA.length === 0 ? 0 : lengthA, 
+      A: lengthA.length === 0 ? 0 : lengthA,
       B: lengthB.length === 0 ? 0 : lengthB,
       units: units.length === 0 ? 0 : units,
       diameter: diameter.current,
       totalLength: totalLength.current,
-      weight: "TODO"
+      weight: "TODO",
     };
 
     sendData(data);

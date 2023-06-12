@@ -4,16 +4,31 @@ import "./line.css";
 import Diameter from "../diameter/Diameter";
 import Input from "../input/Input";
 
-function Line() {
+function Line({ id, sendData }) {
   const [lengthA, setLengthA] = useState("");
   const [units, setUnits] = useState("");
   const totalLength = useRef(0);
   const diameter = useRef(0);
 
   useEffect(() => {
-    totalLength.current = parseInt(lengthA);
-    console.log(totalLength.current);
-  });
+    totalLength.current = parseInt(lengthA || 0);
+    handleData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[lengthA, units, totalLength, diameter]);
+
+  function handleData() {
+    const data = {
+      id: id,
+      shape: "line",
+      A: lengthA.length === 0 ? 0 : lengthA, 
+      units: units.length === 0 ? 0 : units,
+      diameter: diameter.current,
+      totalLength: totalLength.current,
+      weight: "TODO"
+    };
+
+    sendData(data);
+  }
 
   function handleDiameterValue(val) {
       diameter.current = val;

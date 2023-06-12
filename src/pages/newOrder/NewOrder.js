@@ -2,12 +2,18 @@ import React, { useState, useCallback } from "react";
 import Attribute from "../../components/attribute/Attribute";
 import L from "../../components/L/L";
 // import Shape3 from "./components/shape3/Shape3";
-// import Line from "./components/line/Line";
+import Line from "../../components/line/Line";
 import Modal from "../../components/modal/Modal";
 import "./newOrder.css";
 import { urlServer } from "../../assets/helpers";
 import { saveAs } from "file-saver";
 import axios from "axios";
+// import { returnShape } from "../../assets/returnShape";
+
+const shapeComponents = {
+  L: L,
+  line: Line,
+};
 
 export default function NewOrder() {
   const [shapes, setShapes] = useState([]);
@@ -18,6 +24,9 @@ export default function NewOrder() {
     if (shape === "L") {
       const itemId = Math.floor(Math.random() * 99876) + 10000;
       setShapes([...shapes, { id: itemId, shape: "L" }]);
+    } else if (shape === "line") {
+      const itemId = Math.floor(Math.random() * 99876) + 10000;
+      setShapes([...shapes, { id: itemId, shape: "line" }]);
     }
   }
 
@@ -104,24 +113,21 @@ export default function NewOrder() {
           {shapes.length === 0 ? (
             <h2>לא נבחרו צורות</h2>
           ) : (
-            shapes.map((item) => (
-              <React.Fragment key={item.id}>
-                {item.shape === "L" &&
-                <L
-                  sendData={handleDataFromShape}
-                  id={item.id}
-                />
-              }
-                <button
-                  className="delete-button"
-                  onClick={() => handleDelete(item.id)}
-                >
-                  הסר
-                </button>
-              </React.Fragment>
-            ))
+            shapes.map((item) => {
+              const ShapeComponent = shapeComponents[item.shape];
+              return (
+                <React.Fragment key={item.id}>
+                  <ShapeComponent sendData={handleDataFromShape} id={item.id} />
+                  <button
+                    className="delete-button"
+                    onClick={() => handleDelete(item.id)}
+                  >
+                    הסר
+                  </button>
+                </React.Fragment>
+              );
+            })
           )}
-
           {shapes.length > 0 && (
             <button
               onClick={handleCreateOrder}
