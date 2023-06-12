@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import Attribute from "../../components/attribute/Attribute";
 import L from "../../components/L/L";
-// import Shape3 from "./components/shape3/Shape3";
+import Shape3 from "../../components/shape3/Shape3";
 import Line from "../../components/line/Line";
 import Modal from "../../components/modal/Modal";
 import "./newOrder.css";
@@ -13,6 +13,7 @@ import axios from "axios";
 const shapeComponents = {
   L: L,
   line: Line,
+  shape3: Shape3,
 };
 
 export default function NewOrder() {
@@ -27,6 +28,9 @@ export default function NewOrder() {
     } else if (shape === "line") {
       const itemId = Math.floor(Math.random() * 99876) + 10000;
       setShapes([...shapes, { id: itemId, shape: "line" }]);
+    } else if (shape === "shape3") {
+      const itemId = Math.floor(Math.random() * 99876) + 10000;
+      setShapes([...shapes, { id: itemId, shape: "shape3" }]);
     }
   }
 

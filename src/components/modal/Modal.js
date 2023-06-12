@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import "./modal.css";
 import Limg from "../../assets/images/L.png";
-import LineImg from "../../assets/images/line.PNG"
+import LineImg from "../../assets/images/line.PNG";
+import Shape3Img from "../../assets/images/3.png";
 
 const Modal = ({ onDataSent }) => {
   const [isModalOpen, setModalOpen] = useState(false);
-  const images = [{ src: Limg, alt: "L" }, {src: LineImg, alt: "line"}];
+  const images = [
+    { src: Limg, alt: "L" },
+    { src: LineImg, alt: "line" },
+    { src: Shape3Img, alt: "shape3" },
+  ];
 
   const handleModalToggle = () => {
     setModalOpen(!isModalOpen);

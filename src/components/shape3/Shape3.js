@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import LImg from "../../assets/images/3.png";
+import Shape3Img from "../../assets/images/3.png";
 import "./shape3.css";
 import Diameter from "../diameter/Diameter";
 import Input from "../input/Input";
 
-function Shape3() {
+function Shape3({ id, sendData }) {
   const [lengthA, setLengthA] = useState("");
   const [lengthB, setLengthB] = useState("");
   const [lengthC, setLengthC] = useState("");
@@ -14,13 +14,34 @@ function Shape3() {
   const diameter = useRef(0);
 
   useEffect(() => {
-    totalLength.current = parseInt(lengthA) + parseInt(lengthB) + parseInt(lengthC) + parseInt(lengthD);
-    console.log(totalLength.current);
-  });
+    totalLength.current =
+      parseInt(lengthA || 0) +
+      parseInt(lengthB || 0) * 2 +
+      parseInt(lengthC || 0) +
+      parseInt(lengthD || 0);
+    handleData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lengthA, lengthB, lengthC, lengthD, units, totalLength, diameter]);
 
-    function handleDiameterValue(val) {
+  function handleData() {
+    const data = {
+      id: id,
+      shape: "shape3",
+      A: lengthA.length === 0 ? 0 : lengthA,
+      B: lengthB.length === 0 ? 0 : lengthB,
+      C: lengthC.length === 0 ? 0 : lengthC,
+      D: lengthD.length === 0 ? 0 : lengthD,
+      units: units.length === 0 ? 0 : units,
+      diameter: diameter.current,
+      totalLength: totalLength.current,
+      weight: "TODO",
+    };
+
+    sendData(data);
+  }
+
+  function handleDiameterValue(val) {
     diameter.current = val;
-    console.log(diameter.current);
   }
 
   const handleInputs = (text, setter) => {
@@ -34,7 +55,7 @@ function Shape3() {
           <div className="kubeA_shape3">
             {lengthA} <br />A
           </div>
-          <img className="shape3_img" src={LImg} alt="shape3" />
+          <img className="shape3_img" src={Shape3Img} alt="shape3" />
           <div className="kubeB_shape3">
             B <br /> {lengthB}{" "}
           </div>

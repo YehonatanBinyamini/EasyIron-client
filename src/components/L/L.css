@@ -33,7 +33,8 @@
     align-items: center;
     margin: 30px;
     flex-direction: column;
-    
+    position: relative;
+    z-index: 50;
 }
 
 .img {
