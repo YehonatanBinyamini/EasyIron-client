@@ -1,0 +1,24 @@
+.home {
+    background-image: url("https://drive.google.com/file/d/1XlQwlue7_f9FPJ8BLx5AOJZaJv17hkRq/view?usp=sharing.mp4");
+    background-size: 100%;
+    background-position: center;
+    /* Additional styles if needed */
+  }
+  .home-container{
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+  .home-container h1 {
+    font-size: 10pc;
+  }
+  #metal-video {
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }

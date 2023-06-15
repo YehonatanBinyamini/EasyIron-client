@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import axios from "axios";
 import { saveAs } from "file-saver";
 import "./App.css";
-import Home from "./pages/Home";
+import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import RootLayout from "./components/rootLayout/RootLayout";
 import Error from "./pages/Error";

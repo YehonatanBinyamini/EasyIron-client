@@ -19,22 +19,26 @@ function Header(props) {
   return (
     <header className="header">
       <div className="connect-header">
-        <label className="userName-header">שלום {userName}</label>
-        <label className="userName-header">|</label>
-        <NavLink to="./login" onClick={loginHandler}>
-          התחבר
-        </NavLink>
-      </div>
-      <nav className="nav">
-        <NavLink to="./NewOrder">צור הזמנה</NavLink>
-        <NavLink to="./Catalog">קטלוג</NavLink>
-        <NavLink to="./About">אודות</NavLink>
-        <NavLink to="./ContactUs">צור קשר</NavLink>
-      </nav>
+    <label className="userName-header">שלום {userName}</label>
+    <label className="userName-header">|</label>
+    <NavLink className="userName-header" to="./login" onClick={loginHandler}>
+      התחבר
+    </NavLink>
+  </div>
+  <nav className="nav">
+    <NavLink to="./NewOrder">צור הזמנה</NavLink>
+    <NavLink to="./Catalog">קטלוג</NavLink>
+    <NavLink to="./About">אודות</NavLink>
+    <NavLink to="./ContactUs">צור קשר</NavLink>
+  </nav>
+    <div className="logo-container">
       <Link to="./">
         <img className="logo" src={logo} alt="logo" />
       </Link>
-    </header>
+    </div>
+  
+</header>
+
   );
 }
 
