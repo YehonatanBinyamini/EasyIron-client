@@ -22,3 +22,41 @@
     left: 0;
     z-index: -1;
   }
+
+  /* new home.css fro here: */
+  .home-page {
+    text-align: center;
+  }
+  
+  h1 {
+    margin-top: 0;
+  }
+  
+  .vertical-line {
+    position: relative;
+  }
+  
+  .line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background-color: blue; /* Updated color to blue */
+    transform: translateX(-50%);
+  }
+  
+  .point {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 1rem;
+  }
+  
+  .icon {
+    margin-right: 0.5rem;
+  }
+  
+  /* Additional styles if needed */
+    
