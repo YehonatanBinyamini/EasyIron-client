@@ -34,6 +34,7 @@
   
   .vertical-line {
     position: relative;
+    margin-right: -100px;
   }
   
   .line {
@@ -58,5 +59,8 @@
     margin-right: 0.5rem;
   }
   
+  span {
+    margin-left: -100px;
+  }
   /* Additional styles if needed */
     
